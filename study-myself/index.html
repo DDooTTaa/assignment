@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="page">
+      <div class="textContainer">
+        <span id="text_1" class="gradientText gradient_HTML">진짜</span>
+        <span id="text_2" class="gradientText gradient_CSS">겁나</span>
+        <span id="text_3" class="gradientText gradient_Javascript"
+          >돈 많이 벌고 싶다</span
+        >
+      </div>
+    </div>
+    <script type="text/javascript">
+      (function () {
+        const persist = 2500;
+        const textIds = ["text_1", "text_2", "text_3"];
+
+        const turnOnTransition = (el) => {
+          el.classList.add("transitionOn");
+          setTimeout(() => {
+            el.classList.remove("transitionOn");
+          }, persist);
+        };
+
+        const runTransition = (id) => {
+          const el = document.getElementById(id);
+
+          if (el) {
+            setTimeout(() => {
+              turnOnTransition(el);
+
+              setInterval(() => {
+                turnOnTransition(el);
+              }, persist * textIds.length);
+            }, 1);
+          }
+        };
+
+        textIds.forEach((id, index) => {
+          setTimeout(() => {
+            runTransition(id);
+          }, index * persist);
+        });
+      })();
+    </script>
+    <script src="src/index.js"></script>
+  </body>
+</html>
