@@ -1,3 +1,3 @@
 # assignment
 
-챌린지 과제들
+Javascript Nomadcorder Challeange
